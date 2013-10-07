@@ -13,9 +13,11 @@ module.exports = function ($youmeb) {
     $youmeb.register('redisClient', function (done) {
       var client = redis.createClient(port, host);
       if (pass) {
-        client.auth(pass, done);
+        client.auth(pass, function (err) {
+          done(err, client);
+        });
       } else {
-        done();
+        done(null, client);
       }
     });
   });
