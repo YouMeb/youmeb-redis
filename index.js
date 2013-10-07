@@ -20,6 +20,8 @@ module.exports = function ($youmeb) {
         done(null, client);
       }
     });
+
+    done();
   });
 
 };
